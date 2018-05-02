@@ -16,6 +16,31 @@ const incrementCounter = (list, index) => [
   ...list.slice(index + 1)
 ];
 
+const toggleTodo = todo => ({
+  ...todo,
+  completed: !todo.completed 
+});
+
+it('todo should be toggled', () => {
+  const todoBefore = {
+    id: 0,
+    text: 'Learn Redux',
+    completed: false
+  };
+
+  const todoAfter = {
+    id: 0,
+    text: 'Learn Redux',
+    completed: true
+  };
+
+  deepFreeze(todoBefore);
+
+  expect(
+    toggleTodo(todoBefore)
+  ).toEqual(todoAfter);
+});
+
 it('counter should increment', () => {
   const listBefore = [0, 10, 20];
   const listAfter = [0, 11, 20];
