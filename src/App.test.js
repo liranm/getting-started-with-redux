@@ -1,6 +1,53 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import deepFreeze from 'deep-freeze';
+
+const addCounter = list => [...list, 0];
+
+const removeCounter = (list, index) => [
+    ...list.slice(0, index),
+    ...list.slice(index + 1)
+];
+
+const incrementCounter = (list, index) => [
+  ...list.slice(0, index),
+  list[index] + 1,
+  ...list.slice(index + 1)
+];
+
+it('counter should increment', () => {
+  const listBefore = [0, 10, 20];
+  const listAfter = [0, 11, 20];
+
+  deepFreeze(listBefore);
+
+  expect(
+    incrementCounter(listBefore, 1)
+  ).toEqual(listAfter);
+});
+
+it('counter should be removed', () => {
+  const listBefore = [0, 10, 20];
+  const listAfter = [0, 20];
+
+  deepFreeze(listBefore);
+
+  expect(
+    removeCounter(listBefore, 1)
+  ).toEqual(listAfter);
+});
+
+it('counter should be added', () => {
+  const listBefore = [];
+  const listAfter = [0];
+
+  deepFreeze(listBefore);
+
+  expect(
+    addCounter(listBefore)
+  ).toEqual(listAfter);
+});
 
 it.skip('counter increments and decrements', () => {
   expect(
