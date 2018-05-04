@@ -1,9 +1,4 @@
-export const todoApp = (state = {}, action) => {
-  return {
-    todos: todos(state.todos, action),
-    visibilityFilter: visibilityFilter(state.visibilityFilter, action)
-  };
-};
+import { combineReducers } from 'redux';
 
 const visibilityFilter = (state = 'SHOW_ALL', action) => {
   switch(action.type) {
@@ -49,3 +44,8 @@ export const todos = (state = [], action) => {
       return state;
   }
 };
+
+export const todoApp = combineReducers({
+  todos,
+  visibilityFilter
+});
