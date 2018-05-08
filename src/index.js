@@ -10,7 +10,7 @@ import {TodoApp} from './components/todoApp'
 const store = createStore(todoApp);
 
 const render = () => {
-    ReactDOM.render(<TodoApp store={store} todos={store.getState().todos} />, document.getElementById('root'));
+    ReactDOM.render(<TodoApp store={store} {...store.getState()} />, document.getElementById('root'));
 };
 
 store.subscribe(render);
