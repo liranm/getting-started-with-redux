@@ -1,20 +1,22 @@
 import React from 'react';
 
-export const FilterLink = (props) => {
-    if(props.currentFilter === props.filter) {
+export const FilterLink = ({
+    filter,
+    currentFilter,
+    children,
+    onClick
+}) => {
+    if(currentFilter === filter) {
         return (
-            <span>{props.children}</span>
+            <span>{children}</span>
         );
     }
 
     return (
         <a href="#" 
-            onClick={(e) => {
+            onClick={e => {
                 e.preventDefault();
-                props.store.dispatch({
-                    type: 'SET_VISIBILITY_FILTER',
-                    filter: props.filter
-                });
-            }}>{props.children}</a>
+                onClick(filter);
+            }}>{children}</a>
     );
 };
