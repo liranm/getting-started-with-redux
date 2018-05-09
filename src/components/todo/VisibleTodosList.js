@@ -4,7 +4,8 @@ import { TodosList } from './TodosList';
 
 export class VisibleTodosList extends Component {
     componentDidMount() {
-        this.unsubscribe = this.props.store.subscribe(() => {
+        const { store } = this.props;
+        this.unsubscribe = store.subscribe(() => {
             this.forceUpdate();
         });
     }
@@ -14,14 +15,14 @@ export class VisibleTodosList extends Component {
     }
 
     render() {
-        const props = this.props;
-        const state = props.store.getState();
+        const { store } = this.props;
+        const state = store.getState();
         const visibleTodos = getVisibleTodos(state.todos, state.visibilityFilter);
 
         return (
             <TodosList 
                 todos={visibleTodos}
-                onTodoClick={id => props.store.dispatch({
+                onTodoClick={id => store.dispatch({
                     type: 'TOGGLE_TODO',
                     id
                 })} />    

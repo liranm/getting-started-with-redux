@@ -2,9 +2,7 @@ import React from 'react';
 
 let nextTodoId = 0;
 
-export const AddTodo = ({
-    store
-}) => {
+export const AddTodo = ({ store }) => {
     let input;
     
     return (
