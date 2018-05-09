@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from './Link';
 
-export const FilterLink = ({
-    filter,
-    currentFilter,
-    children,
-    onClick
-}) => {
-    if(currentFilter === filter) {
-        return (
-            <span>{children}</span>
-        );
+export class FilterLink extends Component {
+    componentDidMount() {
+        this.unsubscribe = this.props.store.subscribe(() => {
+            this.forceUpdate();
+        });
     }
 
-    return (
-        <a href="#" 
-            onClick={e => {
-                e.preventDefault();
-                onClick(filter);
-            }}>{children}</a>
-    );
-};
+    componentWillUnmount() {
+        this.unsubscribe();
+    }
+    
+    render() {
+        const props = this.props;
+        const state = props.store.getState();
+    
+        return (
+            <Link 
+                active={state.visibilityFilter === props.filter}
+                onClick={() => props.store.dispatch({
+                    type: 'SET_VISIBILITY_FILTER',
+                    filter: props.filter
+                })} >{props.children}</Link>
+        );
+    }
+}

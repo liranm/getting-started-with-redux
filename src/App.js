@@ -25,12 +25,7 @@ class App extends Component {
                         type: 'TOGGLE_TODO',
                         id
                     })} />
-                <Footer
-                    visibilityFilter={visibilityFilter} 
-                    onFilterLinkClick={filter => store.dispatch({
-                        type: 'SET_VISIBILITY_FILTER',
-                        filter
-                    })} />
+                <Footer store={store} />
             </div>
         );
     }    
