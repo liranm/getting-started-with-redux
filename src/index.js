@@ -8,12 +8,8 @@ import {todoApp} from './reducers';
 
 const store = createStore(todoApp);
 
-const render = () => {
-    ReactDOM.render(<App store={store} {...store.getState()} />, document.getElementById('root'));
-};
+ReactDOM.render(<App store={store} />, document.getElementById('root'));
 
-store.subscribe(render);
-render();
 registerServiceWorker();
 
 
