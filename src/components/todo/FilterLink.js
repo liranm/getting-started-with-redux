@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from './Link';
 import { connect } from 'react-redux';
+import { setVisibilityFilter } from '../../actions';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -10,10 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onClick: () => dispatch({
-            type: 'SET_VISIBILITY_FILTER',
-            filter: ownProps.filter
-        })
+        onClick: () => dispatch(setVisibilityFilter(ownProps.filter))
     }; 
 };
 
