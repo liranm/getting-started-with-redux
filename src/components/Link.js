@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Link = ({
+const Link = ({
     active,
     onClick,
     children
@@ -19,3 +19,5 @@ export const Link = ({
             }}>{children}</a>
     );
 };
+
+export default Link;

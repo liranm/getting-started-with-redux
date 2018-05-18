@@ -1,22 +1,3 @@
-const combineReducers = (reducers) => {
-  return (state = {}, action) => {
-    return Object.keys(reducers).reduce((nextState, key) => {
-      nextState[key] = reducers[key](state[key], action);
-
-      return nextState;
-    }, {});
-  };
-};
-
-const visibilityFilter = (state = 'SHOW_ALL', action) => {
-  switch(action.type) {
-      case 'SET_VISIBILITY_FILTER':
-          return action.filter;
-      default:
-          return state;
-  }
-};
-
 const todo = (state, action) => {
   switch(action.type) {
     case 'ADD_TODO':
@@ -39,7 +20,7 @@ const todo = (state, action) => {
   }
 };
 
-export const todos = (state = [], action) => {
+const todos = (state = [], action) => {
   switch(action.type) {
     case 'ADD_TODO':
       return [
@@ -53,7 +34,4 @@ export const todos = (state = [], action) => {
   }
 };
 
-export const todoApp = combineReducers({
-  todos,
-  visibilityFilter
-});
+export default todos;

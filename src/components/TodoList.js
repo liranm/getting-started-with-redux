@@ -1,7 +1,7 @@
 import React from 'react';
-import { Todo } from './Todo';
+import Todo from './Todo';
 
-export const TodosList = ({
+const TodoList = ({
     todos,
     onTodoClick
 }) => (
@@ -13,3 +13,5 @@ export const TodosList = ({
         ))}
     </ul>
 );
+
+export default TodoList;

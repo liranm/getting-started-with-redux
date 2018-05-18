@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from '../../actions';
+import { addTodo } from '../actions';
 
-export let AddTodo = ({ dispatch }) => {
+let AddTodo = ({ dispatch }) => {
     let input;
     
     return (
@@ -19,3 +19,5 @@ export let AddTodo = ({ dispatch }) => {
 };
 
 AddTodo = connect()(AddTodo);
+
+export default AddTodo;
