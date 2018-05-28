@@ -1,5 +1,4 @@
 import todos from './todos'
-import visibilityFilter from './visibilityFilter';
 
 const combineReducers = (reducers) => {
   return (state = {}, action) => {
@@ -12,6 +11,5 @@ const combineReducers = (reducers) => {
 };
 
 export default combineReducers({
-  todos,
-  visibilityFilter
+  todos
 });
