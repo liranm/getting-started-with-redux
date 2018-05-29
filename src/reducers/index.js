@@ -1,4 +1,4 @@
-import todos from './todos'
+import todos, * as fromTodos from './todos'
 
 const combineReducers = (reducers) => {
   return (state = {}, action) => {
@@ -9,6 +9,9 @@ const combineReducers = (reducers) => {
     }, {});
   };
 };
+
+export const getVisibleTodos = (state, filter) => 
+  fromTodos.getVisibleTodos(state.todos, filter);
 
 export default combineReducers({
   todos
