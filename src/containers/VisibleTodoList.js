@@ -34,10 +34,14 @@ class VisibleTodoList extends Component {
     }
 }
 
-const mapStateToProps = (state, { match }) => ({
-    filter: match.params.filter || 'all',   
-    todos: getVisibleTodos(state, match.params.filter)
-});
+const mapStateToProps = (state, { match }) => {
+    const filter = match.params.filter || 'all';
+
+    return {
+        filter,
+        todos: getVisibleTodos(state, filter)
+    };
+};
 
 VisibleTodoList = withRouter(connect(
     mapStateToProps, 
