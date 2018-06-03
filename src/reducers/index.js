@@ -1,18 +1,22 @@
-import todos, * as fromTodos from './todos'
+import { combineReducers } from 'redux';
+import byId, * as fromById from './byId';
+import createList, * as fromList from './createList';
 
-const combineReducers = (reducers) => {
-  return (state = {}, action) => {
-    return Object.keys(reducers).reduce((nextState, key) => {
-      nextState[key] = reducers[key](state[key], action);
+const listByFilter = combineReducers({
+  all: createList('all'),
+  active: createList('active'),
+  completed: createList('completed')
+});
 
-      return nextState;
-    }, {});
-  };
+const todos = combineReducers({
+  byId,
+  listByFilter
+});
+
+export const getVisibleTodos = (state, filter) => {
+  const ids = fromList.getIds(state.listByFilter[filter]);
+
+  return ids.map(id => fromById.getTodo(state.byId, id));
 };
 
-export const getVisibleTodos = (state, filter) => 
-  fromTodos.getVisibleTodos(state.todos, filter);
-
-export default combineReducers({
-  todos
-});
+export default todos;
