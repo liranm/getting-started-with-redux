@@ -1,16 +1,13 @@
 import React from 'react';
-import FilterLink from '../containers/FilterLink';
+import FilterRadio from '../containers/FilterRadio';
 
 const Footer = () => (
-    <p>
-        Show:
-        {' '}
-        <FilterLink filter={'all'}>All</FilterLink>
-        {', '}
-        <FilterLink filter={'active'}>Active</FilterLink>
-        {', '}
-        <FilterLink filter={'completed'}>Completed</FilterLink>
-    </p>
+    <fieldset className="filters">
+        <legend className="filters__title">Show:</legend>
+        <FilterRadio filter={'all'}>All</FilterRadio>
+        <FilterRadio filter={'active'}>Active</FilterRadio>
+        <FilterRadio filter={'completed'}>Completed</FilterRadio>
+    </fieldset>
 );
 
 export default Footer;
