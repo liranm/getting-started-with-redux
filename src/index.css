@@ -161,5 +161,45 @@ body {
   color: #fff;
 }
 
+[class^="filter__label"]::before,
+.filter__label--all::after {
+  content: '';
+  background: #647380;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
 
+.filter__radio {
+  position: absolute;
+  opacity: 0;
+}
 
+.filter__label--all::after {
+  left: 5px;
+}
+
+.filter__label--all {
+  padding-left: 21px;
+}
+
+.filter__radio:checked + .filter__label--all::before {
+  background: #af544f;
+}
+
+.filter__radio:checked + .filter__label--all::after {
+  background: #16a085;
+}
+
+.filter__radio:checked + .filter__label--active::before {
+  background: #af544f; 
+}
+
+.filter__radio:checked + .filter__label--completed::before {
+  background: #16a085; 
+}
